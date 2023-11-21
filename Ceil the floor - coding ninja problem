@@ -1,0 +1,61 @@
+## PROBLEM IS TO FIND THE FLOOR AND CEIL OF TARGET VALUE IN A GIVEN "SORTED" ARRAY
+-> the the target value is not present and there's no smaller element present in case of FLOOR, return -1
+-> the the target value is not present and there's no larger element present in case of CEIL, return -1
+
+
+## getting the floor value
+int getFloor(vector<int> &nums, int n, int x){
+	// we will have to find the largest number which is <= x 
+	int low=0, high=n-1;
+	int ans=-1;	// if there's no smaller element present than x
+	while(low <= high){
+		int mid = low+(high-low)/2;
+		if(nums[mid] <= x){
+			//it could be the floor value
+			ans = mid;
+			low = mid+1;	// but look for more greater(closure) value in right
+		}else{
+			high = mid-1;
+		}
+	}
+
+	if(ans == -1){	//if there is neither small element nor target element is present
+		return -1;
+	}
+	
+	return nums[ans];
+}
+
+
+## getting the ceil value
+int getCeil(vector<int> &nums, int n, int x){
+	int low=0, high=n-1;
+	int ans = -1;
+
+	while(low <= high){
+		int mid = low+(high-low)/2;
+
+		if(nums[mid] >= x){
+			// it could be the ceil value
+			ans = mid;
+			
+			// but look for more smaller(closest) value in the left
+			high = mid-1;
+		}else{
+			low = mid+1;
+		}
+	}
+
+	if(ans == -1){	// if neither greater element nor the target element is present
+		return -1;
+	}
+	return nums[ans];
+}
+
+
+pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x) {
+	int floor = getFloor(a, n, x);
+	int ceil = getCeil(a, n, x);
+
+	return {floor, ceil};
+}
