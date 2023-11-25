@@ -27,11 +27,11 @@ public:
             int mid = low+(high-low)/2;
             if(totalDays(weights, mid) <= days){
                 high = mid-1;
-                ans = mid;
+                ans = mid; // or remove this line
             }else{
                 low = mid+1;
             }
         }
-        return ans;
+        return ans; // and in place of this return low as at the end low will be pointing to the required element
     }
 };
