@@ -41,6 +41,11 @@ public:
 
     int minDays(vector<int>& bloomDay, int m, int k) {
         // OPTIMAL APPROACH USING BINARY SEARCH 
+        long long totalBouquetsFlowers = 0;
+        if(totalBouquetsFlowers > bloomDay.size()){
+            return -1;
+        }
+
         int low = findMin(bloomDay);
         int high = findMax(bloomDay);
         int ans = -1;
