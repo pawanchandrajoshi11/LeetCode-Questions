@@ -41,7 +41,7 @@ public:
 
     int minDays(vector<int>& bloomDay, int m, int k) {
         // OPTIMAL APPROACH USING BINARY SEARCH 
-        long long totalBouquetsFlowers = 0;
+        long long totalBouquetsFlowers = (long long)m * (long long)k;
         if(totalBouquetsFlowers > bloomDay.size()){
             return -1;
         }
