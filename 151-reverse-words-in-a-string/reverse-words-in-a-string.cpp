@@ -9,25 +9,25 @@ public:
 // Reverse the current word, which is s[l..r-1]
 // Set space character for character s[r] if r < s.size()
 // Finally, resize the string s to remove redundant chars.
-// image
 
     string reverseWords(string s) {
         reverse(s.begin(), s.end());
-        int L=0, R=0, n=s.size(), i=0;
-        while(i<n){
-            while(i<n && s[i] == ' ')   i++;
-            while(i<n && s[i] != ' ')   s[R++] = s[i++];
+        int L=0, R=0, i=0;
+        while(i<s.length()){
+            while(i< s.length() && s[i] == ' ') i++;
+            while(i< s.length() && s[i] != ' ') s[R++] = s[i++];
 
             if(L < R){
                 reverse(s.begin()+L, s.begin()+R);
-                s[R]=' ';
+                s[R] = ' ';
                 R++;
                 L = R;
             }
             i++;
         }
-
-        if(R > 0) s.resize(R-1);
+        if(R > 0){
+            s.resize(R-1);
+        }
         return s;
     }
 };
