@@ -9,12 +9,11 @@ public:
             res[i] = res[i-1] * nums[i-1];
         }
 
-        int right=1;
+        int right = 1;
         for(int i=nums.size()-1; i>=0; i--){
             res[i] = res[i] * right;
             right = right * nums[i];
         }
-
         return res;
     }
 };
