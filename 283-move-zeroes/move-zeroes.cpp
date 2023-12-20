@@ -19,7 +19,7 @@ public:
         // moving zeros algo
         for(int i=j+1; i<nums.size(); i++){
             if(nums[i] != 0){
-                swap(nums[j], nums[i]);
+                swap(nums[i], nums[j]);
                 j++;
             }
         }
